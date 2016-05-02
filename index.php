@@ -62,4 +62,16 @@
   echo('<strong>linked items for item 16:</strong> ');
   var_dump($aLinkedItems16);
   echo("<br/><br/>");
+
+  echo("<table><tbody>");
+  foreach ($aRatings1 as $aCurrentRating) {
+    $iProductID = $aCurrentRating["product_id"];
+    $fRating = $aCurrentRating["rating"];
+    $aProductInfo = $vogoo_users->get_product_info($iProductID);
+    $sProductName = $aProductInfo["product_name"];
+    $sProductGenres = $aProductInfo["product_genres"];
+    echo("<tr><td>" . $sProductName . "</td><td>" . $sProductGenres. "</td><td>" . $fRating . "</td></tr>");
+    // var_dump($sProductInfo);
+  }
+  echo("</tbody><table>");
 ?>
